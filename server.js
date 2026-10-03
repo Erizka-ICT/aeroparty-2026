@@ -2,11 +2,11 @@ import 'dotenv/config';
 import express from 'express';
 import path from 'path';
 import crypto from 'crypto';
-import { fileURLToPath } from 'url';
 import { readFile } from 'fs/promises';
 import pg from 'pg';
 const { Pool } = pg;
-const __filename=fileURLToPath(import.meta.url), __dirname=path.dirname(__filename);
+// Gunakan direktori kerja agar aman saat Netlify membundel ESM menjadi CommonJS.
+const __dirname = process.cwd();
 const app=express(), port=Number(process.env.PORT||3000);
 const appName=process.env.APP_NAME||'AeroParty 2026', stepPrice=Number(process.env.STEP_PRICE_IDR||150000);
 const paymentInfo={bank:'BCA',accountNumber:'4372508161',accountHolder:'Cita Amadhea'};
