@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AeroParty 2026 — choose your class and secure your step position." />
+  <title>AeroParty 2026 — Book Your Step</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="ambient ambient-1"></div><div class="ambient ambient-2"></div>
+  <header class="site-header">
+    <a class="brand" href="/"><span class="brand-mark">A</span><span>AEROPARTY <b>2026</b></span></a>
+    <button class="ghost-btn" onclick="scrollToSection('how')">How it works</button>
+  </header>
+
+  <main>
+    <section class="hero section-pad">
+      <div class="hero-copy">
+        <div class="eyebrow">THE OFFICIAL POSITION BOOKING</div>
+        <h1>Find your<br><em>perfect step.</em></h1>
+        <p>Choose your class, select your position, transfer the payment, upload proof, and keep your booking confirmation for event day.</p>
+        <button class="gold-btn" onclick="scrollToSection('classes')">Book My Step <span>→</span></button>
+      </div>
+      <div class="hero-art">
+        <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+        <div class="hero-card"><span>50</span><small>POSITIONS<br>PER CLASS</small></div>
+        <div class="floating-tag tag-1">AERO PARTY</div>
+        <div class="floating-tag tag-2">2026</div>
+      </div>
+    </section>
+
+    <section id="classes" class="section-pad section-dark">
+      <div class="section-heading"><div><div class="eyebrow">STEP 01</div><h2>Choose your class</h2></div><div class="step-indicator">01 / 03</div></div>
+      <div id="classGrid" class="class-grid"></div>
+    </section>
+
+    <section id="positions" class="section-pad position-section hidden">
+      <div class="section-heading"><div><div class="eyebrow">STEP 02</div><h2 id="selectedClassTitle">Select your position</h2><p class="muted">Posisi mengikuti layout zigzag A–H seperti denah event. Available positions are shown in gold. Paid positions are locked.</p></div><div class="legend"><span><i class="dot available"></i> Available</span><span><i class="dot pending"></i> Pending</span><span><i class="dot paid"></i> Sold</span></div></div>
+      <div id="stepGrid" class="step-grid"></div>
+      <div id="selectedBar" class="selected-bar hidden"><div><span class="muted">Selected position</span><strong id="selectedNumber">—</strong></div><button class="gold-btn" onclick="openDetails()">Continue <span>→</span></button></div>
+    </section>
+
+    <section id="how" class="section-pad how-section">
+      <div class="section-heading"><div><div class="eyebrow">SIMPLE PROCESS</div><h2>How it works</h2></div></div>
+      <div class="process-grid"><article><b>01</b><h3>Choose</h3><p>Select your class and preferred step position.</p></article><article><b>02</b><h3>Pay</h3><p>Transfer to the listed BCA account and upload proof.</p></article><article><b>03</b><h3>Confirm</h3><p>Admin verifies your transfer before locking the position.</p></article><article><b>04</b><h3>Save</h3><p>Keep your booking proof or screenshot for event day.</p></article></div>
+    </section>
+  </main>
+
+  <div id="modal" class="modal hidden"><div class="modal-card"><button class="close" onclick="closeModal()">×</button><div id="modalContent"></div></div></div>
+  <div id="toast" class="toast"></div>
+  <script src="/app.js"></script>
+</body>
+</html>

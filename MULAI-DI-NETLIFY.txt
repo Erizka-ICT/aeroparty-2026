@@ -1,0 +1,16 @@
+AEROPARTY 2026 — VERSI PENYESUAIAN NETLIFY
+
+CATATAN: Backend memakai Netlify Functions. File bukti transfer disimpan ke Supabase Storage bucket privat. Database tetap PostgreSQL/Supabase.
+
+SEBELUM DEPLOY
+1. Push folder proyek ini ke repository GitHub baru/yang digunakan. Jangan ikut mengunggah file .env atau kunci rahasia.
+2. Di Netlify pilih Add new site > Import an existing project, lalu pilih repository. Build command: npm install (atau kosongkan); Publish directory: public.
+3. Di Site configuration > Environment variables, isi: DATABASE_URL (connection string PostgreSQL Supabase), SUPABASE_URL (Project URL), SUPABASE_SERVICE_ROLE_KEY (service_role key, RAHASIA), SUPABASE_BUCKET=bukti-transfer, ADMIN_USERNAME, ADMIN_PASSWORD, STEP_PRICE_IDR=150000, APP_NAME=AeroParty 2026.
+4. Pastikan bucket bukti-transfer sudah dibuat sebagai PRIVATE. Jangan pernah memasukkan service role key ke file public/app.js atau membagikannya.
+5. Deploy. Setelah deploy, uji halaman, pemesanan nomor, unggah bukti, dan admin.
+
+PENTING
+- DATABASE_URL harus berasal dari database PostgreSQL Supabase yang sama dengan yang sudah berisi tabel AeroParty. Jika belum, jalankan schema.sql sekali di Supabase SQL Editor.
+- Netlify Functions memiliki batas waktu/ukuran dan koneksi database serverless; uji pemesanan sebelum dibagikan ke peserta.
+- File .env dan node_modules sengaja tidak disertakan.
+- Periksa dan ganti password admin/kunci yang pernah tersimpan di ZIP lama jika ZIP itu pernah dibagikan.
