@@ -1,8 +1,9 @@
-```js
 import serverless from 'serverless-http';
 import { app, ensureDb } from '../../server.js';
 
-const proxy = serverless(app);
+const proxy = serverless(app, {
+  basePath: "/.netlify/functions/api"
+});
 
 export const handler = async (event, context) => {
   try {
@@ -19,4 +20,3 @@ export const handler = async (event, context) => {
     };
   }
 };
-```
